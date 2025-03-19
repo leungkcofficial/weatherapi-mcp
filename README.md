@@ -9,6 +9,14 @@ An MCP server that provides current weather and air quality data using WeatherAP
 - Dynamic URI support for weather resources
 - Easy integration with Windsurf IDE
 
+## Getting Started
+
+### Get WeatherAPI Key
+
+1. Go to [WeatherAPI.com](https://www.weatherapi.com)
+2. Sign up for a free account
+3. After signing in, go to your dashboard
+4. Copy your API key from the "API Keys" section
 
 ### MCP Configuration
 
@@ -27,6 +35,8 @@ Add the following configuration to your Windsurf MCP config file:
   }
 }
 ```
+
+Replace `YOUR_API_KEY_HERE` with the API key you obtained from WeatherAPI.com.
 
 ### Tools
 
@@ -57,7 +67,6 @@ Example response:
   }
 }
 ```
-
 
 ## License
 
