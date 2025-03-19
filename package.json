@@ -1,0 +1,42 @@
+{
+  "name": "@swonixs/weatherapi-mcp",
+  "version": "0.0.1",
+  "description": "WeatherAPI MCP sunucusu - Hava durumu ve hava kalitesi verileri için MCP aracı",
+  "type": "module",
+  "main": "dist/server.js",
+  "types": "dist/server.d.ts",
+  "bin": {
+    "weatherapi-mcp": "./dist/server.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node --esm src/server.ts",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "weather",
+    "weatherapi",
+    "hava-durumu",
+    "modelcontextprotocol",
+    "air-quality"
+  ],
+  "author": "swonixs",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.25",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}
