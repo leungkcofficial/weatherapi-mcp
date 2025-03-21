@@ -19,13 +19,12 @@ const BASE_URL = 'http://api.weatherapi.com/v1';
 // MCP sunucusu oluştur
 const server = new McpServer({
   name: "WeatherAPI",
-  version: "1.0.0"
+  version: "1.1.0"
 });
 
 // Weather API tool tanımı
 type WeatherArgs = {
   location: string;
-  aqi?: boolean;
 };
 
 const getWeather = async (args: WeatherArgs) => {
@@ -33,8 +32,7 @@ const getWeather = async (args: WeatherArgs) => {
     const response = await axios.get(`${BASE_URL}/current.json`, {
       params: {
         key: API_KEY,
-        q: args.location,
-        aqi: args.aqi ? 'yes' : 'no'
+        q: args.location
       }
     });
 
@@ -48,8 +46,7 @@ const getWeather = async (args: WeatherArgs) => {
           temp_c: data.current.temp_c,
           condition: data.current.condition.text,
           humidity: data.current.humidity,
-          wind_kph: data.current.wind_kph,
-          air_quality: args.aqi ? data.current.air_quality : undefined
+          wind_kph: data.current.wind_kph
         }, null, 2)
       }]
     };
@@ -65,8 +62,7 @@ const getWeather = async (args: WeatherArgs) => {
 server.tool(
   "get_weather",
   {
-    location: z.string().describe("Şehir adı"),
-    aqi: z.boolean().optional().describe("Hava kalitesi bilgisi isteniyor mu?")
+    location: z.string().describe("Şehir adı")
   },
   async (args: WeatherArgs) => getWeather(args)
 );
@@ -77,7 +73,7 @@ server.resource(
   new ResourceTemplate("weather://{city}/current", { list: undefined }),
   async (uri, variables) => {
     const city = variables.city as string;
-    const result = await getWeather({ location: city, aqi: true });
+    const result = await getWeather({ location: city });
     return {
       contents: [{
         uri: uri.href,

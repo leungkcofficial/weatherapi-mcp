@@ -7,7 +7,7 @@ An MCP server that provides current weather and air quality data using WeatherAP
 - Get current weather data for any city
 - Air quality information (optional)
 - Dynamic URI support for weather resources
-- Easy integration with Windsurf IDE
+- Easy integration with n8n, Claude Desktop App, Windsurf IDE,Cursor IDE, and other MCP clients
 
 ## Getting Started
 
@@ -46,7 +46,6 @@ Get current weather data for a specified city.
 
 Parameters:
 - `location` (string): City name
-- `aqi` (boolean, optional): Include air quality data
 
 Example response:
 ```json
@@ -67,6 +66,10 @@ Example response:
   }
 }
 ```
+
+### Repository
+
+[WeatherAPI MCP Server](https://github.com/swonixs/weatherapi-mcp)
 
 ## License
 

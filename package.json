@@ -1,6 +1,6 @@
 {
   "name": "@swonixs/weatherapi-mcp",
-  "version": "0.0.1",
+  "version": "1.1.0",
   "description": "WeatherAPI MCP sunucusu - Hava durumu ve hava kalitesi verileri için MCP aracı",
   "type": "module",
   "main": "dist/server.js",
