@@ -25,6 +25,7 @@
   "author": "swonixs",
   "license": "MIT",
   "dependencies": {
+    "@leungkcofficial/weatherapi-mcp": "^1.1.0",
     "@modelcontextprotocol/sdk": "^1.7.0",
     "axios": "^1.6.7",
     "dotenv": "^16.4.5",
@@ -33,7 +34,7 @@
   "devDependencies": {
     "@types/node": "^20.11.25",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.8.3"
   },
   "files": [
     "dist",

@@ -29,24 +29,45 @@ type WeatherArgs = {
 
 const getWeather = async (args: WeatherArgs) => {
   try {
-    const response = await axios.get(`${BASE_URL}/current.json`, {
+    const response = await axios.get(`${BASE_URL}/forecast.json`, {
       params: {
         key: API_KEY,
-        q: args.location
+        q: args.location,
+        days: 3,
+        aqi: "no",
+        alerts: "no"
       }
     });
 
     const data = response.data;
+    const current = {
+      location: data.location.name,
+      country: data.location.country,
+      temp_c: data.current.temp_c,
+      condition: data.current.condition.text,
+      humidity: data.current.humidity,
+      wind_kph: data.current.wind_kph,
+      last_updated: data.current.last_updated
+    };
+    
+    const forecast = data.forecast.forecastday.map((day: any) => ({
+      date: day.date,
+      maxtemp_c: day.day.maxtemp_c,
+      mintemp_c: day.day.mintemp_c,
+      avgtemp_c: day.day.avgtemp_c,
+      maxwind_kph: day.day.maxwind_kph,
+      totalprecip_mm: day.day.totalprecip_mm,
+      condition: day.day.condition.text,
+      uv: day.day.uv,
+      sunrise: day.astro.sunrise,
+      sunset: day.astro.sunset
+    }));
     return {
       content: [{
         type: "text" as const,
         text: JSON.stringify({
-          location: data.location.name,
-          country: data.location.country,
-          temp_c: data.current.temp_c,
-          condition: data.current.condition.text,
-          humidity: data.current.humidity,
-          wind_kph: data.current.wind_kph
+          current,
+          forecast
         }, null, 2)
       }]
     };
