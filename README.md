@@ -1,6 +1,6 @@
 # WeatherAPI MCP Server
 
-An MCP server that provides current weather and air quality data using WeatherAPI.
+An MCP server that provides current weather and air quality data using WeatherAPI. Forked from @swonixs and added weather forecast
 
 ## Features
 
@@ -27,7 +27,7 @@ Add the following configuration to your Windsurf MCP config file:
   "mcpServers": {
     "weather": {
       "command": "npx",
-      "args": ["-y", "@swonixs/weatherapi-mcp"],
+      "args": ["-y", "@leungkcofficial/weatherapi-mcp"],
       "env": {
         "WEATHER_API_KEY": "YOUR_API_KEY_HERE"
       }
